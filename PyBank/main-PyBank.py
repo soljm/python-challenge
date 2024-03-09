@@ -2,9 +2,6 @@ import os
 import csv
 # Path to file
 budget_data_csv = os.path.join("PyBank", "Resources", "budget_data.csv")
-# Print title
-print("Financial Analysis")
-print("-------------------------------------")
 # Open and read CSV file
 with open(budget_data_csv, encoding='UTF-8') as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
@@ -22,11 +19,10 @@ with open(budget_data_csv, encoding='UTF-8') as csvfile:
     greatest_increase_date = None
     greatest_decrease_date = None
     
-    for line in csv_reader:
+    for date, profit in csv_reader:
         # Total Months
         total_months += 1
         # Net Profit
-        date, profit = line
         profit = int(profit)
         net_profit += profit
         # Average change
@@ -52,11 +48,6 @@ with open(budget_data_csv, encoding='UTF-8') as csvfile:
 
 average_change = (final_month_profit - first_month_profit) / (total_months - 1)
 average_change = round(average_change, 2)
-print(f"Total Months: {total_months}")
-print(f"Total: ${net_profit}")
-print(f"Average Change: ${average_change}")
-print(f"Greatest Increase in Profits: {greatest_increase_date} ${greatest_increase}")
-print(f"Greatest Decrease in Profits: {greatest_decrease_date} ${greatest_decrease}")
 
 with open("PyBank/Analysis/output.txt", "w") as f:
     f.write("Financial Analysis\n")
@@ -67,5 +58,6 @@ with open("PyBank/Analysis/output.txt", "w") as f:
     f.write(f"Greatest Increase in Profits: {greatest_increase_date} ${greatest_increase}\n")
     f.write(f"Greatest Decrease in Profits: {greatest_decrease_date} ${greatest_decrease}")
 
-
-    
+with open("PyBank/Analysis/output.txt", "r") as f:
+    for line in f:
+        print(line)
