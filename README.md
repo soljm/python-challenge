@@ -40,4 +40,5 @@ Credits to my friend, NT, who gave me these ideas to make my code more concise:
 - Assigning value was `None` rather than `0`
 - Writing in text file first then printing to terminal by reading said file (so that it is not repititive and less time consuming)
 - This particular line of code: `candidate_votes[candidate] = candidate_votes.get(candidate, 0) + 1`
+
 - Using `.items()` to loop through the pairs/tuples
