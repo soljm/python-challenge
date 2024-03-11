@@ -5,7 +5,7 @@ import csv
 with open("PyPoll/Resources/election_data.csv", encoding='UTF-8') as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=',')
 
-    # skip header
+    # skip/store header
     csv_header = next(csvfile)
 
     # set inital value
@@ -25,9 +25,9 @@ with open("PyPoll/Resources/election_data.csv", encoding='UTF-8') as csvfile:
 # make a text file and write analysis
 with open("PyPoll/Analysis/output2.txt", 'w') as f:
     f.write("Election Results\n")
-    f.write("------------------------------\n")
+    f.write("----------------------------------------\n")
     f.write(f"Total votes: {total_votes}\n")
-    f.write("------------------------------\n")
+    f.write("----------------------------------------\n")
 
     winning_candidate = None
     
@@ -41,9 +41,9 @@ with open("PyPoll/Analysis/output2.txt", 'w') as f:
         if winning_candidate is None or votes > candidate_votes[winning_candidate]:
             winning_candidate = candidate
 
-    f.write("------------------------------\n")
+    f.write("----------------------------------------\n")
     f.write(f"Winner: {winning_candidate}\n")
-    f.write("------------------------------\n")
+    f.write("----------------------------------------\n")
 
 # read text file to print to terminal
 with open("PyPoll/Analysis/output2.txt", 'r') as f:
